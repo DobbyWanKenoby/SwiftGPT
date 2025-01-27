@@ -1,4 +1,0 @@
-accessModifier: public
-generate:
-  - types
-  - client

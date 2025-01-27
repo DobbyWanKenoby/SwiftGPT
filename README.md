@@ -1,137 +1,205 @@
-# ChatGPTSwift API
+# SwiftGPT
 
-![Alt text](https://imagizer.imageshack.com/v2/640x480q90/923/c9MPBA.png "image")
+![my badge](https://badgen.net/static/SPM/compatible/green) ![my badge](https://badgen.net/static/Swift/6&nbsp;|&nbsp;5.10/orange) ![my badge](https://badgen.net/static/license/MIT/blue)
 
-Access OpenAI ChatGPT Official API using Swift. Works on all Apple platforms.
+Access OpenAI ChatGPT Official API using Swift. 
+
+## Main features
+
+- OpenAI like API, written on Swift.
+- Works on all Apple platforms and Linux.
+- Full Swift Concurrency and Swift 6 integration.
+- Supported ChatCompletion (text generation), and later Assistant API, Audio (voice generation, text transcriptions), Image generation functions.
+
+### Thanks
+
+Current project based on a [ChatGPTSwift](https://github.com/alfianlosari/ChatGPTSwift.git) package.
+
+#### Main differences from ChatGPTSwift
+
+- OpenAI like API, not one class for all functions. 
+- Full Swift Concurrency integration without data races, `unchecked @Sendable` and other non-Sendable classes.
+- Added the ability to use your own server URL for requests (it is relevant if necessary to use proxy).
+- Used actual version of OpenAPI.yaml.
+- Used friendly ChatGPT models an other names, such as `.gpt4o` instead of `.gpt_hyphen_4o`, `.textEventStream` instead of `.text_event_hyphen_stream` and etc.
+- Improved bugs in internal logic.
+- Removed logic of store messages list (`historyList` property). It was an outdated solution that requires improvements, and now Assistants API is able to reduce the size of the context in auto mode.
+- Removed deprecated support of CocoaPods.
 
 ## Supported Platforms
 
-- iOS/tvOS 15 and above
-- macOS 12 and above
-- watchOS 8 and above
+- iOS/tvOS 18 and above
+- macOS 15 and above
+- watchOS 11 and above
 - Linux
 
 ## Installation
 
 ### Swift Package Manager
 - File > Swift Packages > Add Package Dependency
-- Add https://github.com/alfianlosari/ChatGPTSwift.git
-
-### Cocoapods
-```ruby
-platform :ios, '15.0'
-use_frameworks!
-
-target 'MyApp' do
-  pod 'ChatGPTSwift', '~> 1.3.1'
-end
-```
+- Add https://github.com/DobbyWanKenoby/SwiftGPT.git
 
 ## Requirement
 
-Register for API key from [OpenAI](https://openai.com/api). Initialize with api key
-
-```swift
-let api = ChatGPTAPI(apiKey: "API_KEY")
-```
+Register for API key from [OpenAI](https://openai.com/api).
 
 ## Usage
 
+### Global configuration
+
+Specify global configuration, that are common to all sessions, using static properties of type `OpenAI.Configuration`. You can later override the settings on individually for each session.
+
+#### API KEY
+
+Firstly set API key:
+
+```swift
+OpenAI.Configuration.apiKey = .apiKey("API_KEY")
+```
+
+If you require more complex logic of working with an API key, then use `APIKeyProvider`. Below is an example in which the API key is requested asynchronously from a remote server, and during this time, all requests will wait for the completion of the retrieval process.
+
+```swift
+// Custom APIKeyProvider imlementation
+actor ServiceAPIKeyProvider: OpenAI.APIKeyProvider {
+    private var _apiKey: String?
+    var apiKey: String {
+        get async throws {
+            // Wait while API key not setted
+            while _apiKey == nil {
+                try Task.checkCancellation()
+                await Task.yield()
+            }
+            return _apiKey!
+        }
+    }
+    init(apiKey: String? = nil) {
+        _apiKey = apiKey
+    }
+    
+    func fetchAPIKey() async throws -> String {
+        _apiKey = nil
+        let newAPIKey = try await // ... fetching logic
+        _apiKey = newAPIKey
+    }
+}
+
+// Set provider to global configuration
+let provider = ServiceAPIKeyProvider(apiKey: "API_KEY")
+OpenAI.Configuration.apiKey = .provider(provider)
+```
+
+#### Server URL
+
+You can specify server URL:
+
+```swift
+OpenAI.Configuration.url = "https://you_own_proxy_chatgpt.com"
+```
+
+> Other sesttings you can see in specification of `OpenAI.Configuration`.
+
+### Chat Completions
+
+`ChatCompletions` type allow you generate text from a promt.
+
+First create `OpenAI.Chat` instance with passing used model:
+
+```swift
+// Pass KeyPath to used configuration of some model
+let chat = OpenAI.Chat(model: \.gpt4o)
+```
+
+> **Why use KeyPath instead of enum?**
+>
+> Different GPT models use different parameters in an HTTP request. For example, gpt-4 uses the parameter maxTokens to specify the maximum number of tokens, while gpt-o1 uses max_completion_tokens.
+>
+> From the standpoint of library implementation, it would be easiest for me to provide you with one large generic structure with all the fields, leaving you to figure out which parameters can be passed for the model you are using. However, I decided to make this process more convenient: depending on the selected GPT model, the internal generic type will change so that you configure the model only within the framework of parameters available to it.
+>
+> The most convenient way to implement such behavior is by using KeyPath, as it is essentially the only proper way to pass an object with a configuration, configure a generic type, and allow the use of autocompletion.
+
+if current package have not KeyPath with needed model, you can use another `OpenAI.Chat.init` to pass custom model name:
+
+```swift
+// Pass textual name of model
+let chat = OpenAI.Chat(customModelName: "gpt-4o-2024-11-20")
+```
+
 There are 2 APIs: stream and normal
 
-### Stream
+#### Normal
+
+A normal HTTP request and response lifecycle. Server will send the complete text (it will take more time to response):
+
+```swift
+let response = try await chat.completions(promt: "Please tell me about Space")
+print(response)
+```
+
+#### Stream
 
 The server will stream chunks of data until complete, the method `AsyncThrowingStream` which you can loop using For-Loop like so:
 
 ```swift
-Task {
-    do {
-        let stream = try await api.sendMessageStream(text: "What is ChatGPT?")
-        for try await line in stream {
-            print(line)
-        }
-    } catch {
-        print(error.localizedDescription)
-    }
+let stream = try await chat.streamCompletions(promt: "What is ChatGPT?")
+for try await line in stream {
+    print(line)
 }
 ```
 
-### Normal
-A normal HTTP request and response lifecycle. Server will send the complete text (it will take more time to response)
+#### Configurate request
+
+##### Request configuration
+
+Optionally, you can pass additional configuration to `completions` method. Because `OpenAI.Chat` is a generic, you must take certain using configuration-type. You can do this using the property `ConfigurationType` of `OpenAI.Chat` instance:
 
 ```swift
-Task {
-    do {
-        let response = try await api.sendMessage(text: "What is ChatGPT?")
-        print(response)
-    } catch {
-        print(error.localizedDescription)
-    }
-}
-        
+// Create empty configuration
+var configuration = chat.ConfigurationType.init()
+
+// Configure
+configuration.maxTokens = 100
+configuration.temperature = 0.8
+
+// Pass configuration to completion method
+let response = chat.completion(promt: "What is ChatGPT?", configuration: configuration)
 ```
-
-### Providing extra parameters
-
-Optionally, you can provide the model, system prompt, temperature, and model like so.
-
-```swift
-let response = try await api.sendMessage(text: "What is ChatGPT?",
-                                         model: "gpt-4",
-                                         systemText: "You are a CS Professor",
-                                         temperature: 0.5)
-```
-
-Default values for these parameters are:
-- model: `gpt-3.5-turbo`
-- systemText: `You're a helpful assistant`
-- temperature: `0.5`
 
 To learn more about those parameters, you can visit the official [ChatGPT API documentation](https://platform.openai.com/docs/guides/chat/introduction) and [ChatGPT API Introduction Page](https://openai.com/blog/introducing-chatgpt-and-whisper-apis)
 
-## History List
+##### Context (messages history)
 
-The client stores the history list of the conversation that will be included in the new prompt so ChatGPT aware of the previous context of conversation. When sending new prompt, the client will make sure the token count is not exceeding 4096 using [GPTEncoder library](https://github.com/alfianlosari/GPTEncoder) to calculate tokens in string, in case it exceeded the token, some of previous conversations will be truncated. In future i will provide an API to specify the token threshold as new gpt-4 model accept much bigger 8k tokens in a prompt.
-
-
-### View Current History List
-
-You can view current history list from the `historyList` property.
+Optionally, you can pass developer (system) message and history of messages to request. Just use properties from completions method:
 
 ```swift
-print(api.historyList)
+let response = try await chat.completions(
+	promt: "Please tell me about Space", 
+	developerText: "You a senior Swift developer with 20 years of experience", 
+	previousMessages: [/** Array with previous messages**/]
+)
 ```
 
-### Delete History List
+> Some models use `developer` key, and some - `system` key for developer-provided instructions that the model should follow (parameter `messages` in HTTP-request, see [official API documentation](https://platform.openai.com/docs/api-reference/chat) for additional info). SwiftGPT incapsulate this logic and use needed key automatically. Only when you create `OpenAI.Chat` instance with `init(customModelName:)` you need to specify which keys to use (property `developerMessageKey` in configuration instance).
 
-You can also delete the history list by invoking
+##### Image
+
+You can pass image to completions request. Just use image property:
 
 ```swift
-api.deleteHistoryList()
+let image: Data = ...
+let response = try await chat.completions(
+	promt: "Is there an notebook on this image?",
+	image: image
+) 
 ```
 
-### Replace History List
+## Contribute
 
-You can provide your own History List, this will replace the stored history list. Remember not to pass the 4096 tokens threshold.
+If you want to contribute to the project by adding new parameters to existing APIs or creating new APIs, simply create a Merge Request.
 
-```swift
-let myHistoryList = [
-    Message(role: "user", content: "who is james bond?")
-    Message(role: "assistant", content: "secret british agent with codename 007"),
-    Message(role: "user", content: "which one is the latest movie?"),
-    Message(role: "assistant", content: "It's No Time to Die played by Daniel Craig")
-]
+## TODO
 
-api.replaceHistoryList(with: myHistoryList)
-```
-
-## GPT Encoder Lib
-I've also created [GPTEncoder](https://github.com/alfianlosari/GPTEncoder) Swift BPE Encoder/Decoder for OpenAI GPT Models. A programmatic interface for tokenizing text for OpenAI GPT API.
-
-## GPT Tokenizer UI Lib
-I've also created [GPTTokenizerUI](https://github.com/alfianlosari/GPTTokenizerUI), a SPM lib you can integrate in your app for providing GUI to input text and show the tokenization results used by GPT API.
-
-![Alt text](https://imagizer.imageshack.com/v2/640x480q70/922/CEVvrE.png "image")
-
-## Demo Apps
-You can check the demo apps for iOS and macOS from the [SwiftUIChatGPT repo](https://github.com/alfianlosari/ChatGPTSwiftUI)
+- Add parameters to ChatCompetions (such as tools and etc)
+- Add Audio (TTS, STT) API
+- Add Assistants API
+- Add Image Generation API

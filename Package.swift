@@ -1,21 +1,17 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-    name: "ChatGPTSwift",
-    platforms: [.iOS(.v15), .macOS(.v12), .tvOS(.v15), .watchOS(.v8)],
+    name: "SwiftGPT",
+    platforms: [.iOS(.v18), .macOS(.v15), .tvOS(.v18), .watchOS(.v11)],
     products: [
         .library(
-            name: "ChatGPTSwift",
-            targets: ["ChatGPTSwift"]),
-        .executable(
-            name: "SampleApp",
-            targets: ["SampleApp"]),
+            name: "SwiftGPT",
+            targets: ["SwiftGPT"])
     ],
     dependencies: [
-        .package(url: "https://github.com/alfianlosari/GPTEncoder.git", exact: "1.0.4"),
         .package(url: "https://github.com/apple/swift-openapi-generator", from: "1.2.0"),
         .package(url: "https://github.com/apple/swift-openapi-runtime", from: "1.4.0"),
         .package(url: "https://github.com/apple/swift-openapi-urlsession", from: "1.0.0"),
@@ -24,9 +20,8 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "ChatGPTSwift",
+            name: "SwiftGPT",
             dependencies: [
-                .product(name: "GPTEncoder", package: "GPTEncoder"),
                 .product(name: "HTTPTypes", package: "swift-http-types"),
                 .product(name: "OpenAPIRuntime", package: "swift-openapi-runtime"),
                 .product(name: "OpenAPIURLSession", package: "swift-openapi-urlsession",
@@ -37,16 +32,11 @@ let package = Package(
                     condition: .when(platforms: [.linux])
                 ),
             ]
+            // uncomment to generate new API files from OpenAPI.yaml
             // plugins: [.plugin(name: "OpenAPIGenerator", package: "swift-openapi-generator")]
             ),
-        .executableTarget(
-            name: "SampleApp",
-            dependencies: [
-                "ChatGPTSwift"
-            ]
-        ),
         .testTarget(
-            name: "ChatGPTSwiftTests",
-            dependencies: ["ChatGPTSwift"]),
+            name: "SwiftGPTTests",
+            dependencies: ["SwiftGPT"]),
     ]
 )

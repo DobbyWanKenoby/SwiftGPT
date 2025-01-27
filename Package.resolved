@@ -1,4 +1,5 @@
 {
+  "originHash" : "7185757185e3fcfb0198a93895c96da8a2dba37536527a3d6e9909cab1081d83",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -7,15 +8,6 @@
       "state" : {
         "revision" : "fb308ee72f3d4c082a507033f94afa7395963ef3",
         "version" : "1.21.0"
-      }
-    },
-    {
-      "identity" : "gptencoder",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/alfianlosari/GPTEncoder.git",
-      "state" : {
-        "revision" : "a86968867ab4380e36b904a14c42215f71efe8b4",
-        "version" : "1.0.4"
       }
     },
     {
@@ -190,5 +182,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
