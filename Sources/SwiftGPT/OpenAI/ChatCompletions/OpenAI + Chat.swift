@@ -30,66 +30,27 @@ public extension OpenAI {
     final class Chat<C: ChatCompletionsConfiguration> {
         
         private let client: Client
+        
+        public let model: GPTModel<C>
         public let apiKey: OpenAI.APIKey?
-        private let model: GPTModel
         
-        let ConfigurationType = C.self
-        
-        private enum GPTModel {
-            case model(OpenAI.Chat.APIModel)
-            case custom(String)
-            
-            var name: String {
-                switch self {
-                case .model(let apiModel):
-                    apiModel.rawValue
-                case .custom(let string):
-                    string
-                }
-            }
+        /// Type of current model configuration
+        ///
+        /// Use current value for initialization new configuration for pass to completions method
+        var ConfigurationType: C.Type {
+            model.ConfigurationType.self
         }
         
         /// Create new session with chat completions functional
         ///
-        /// **Why Use KeyPath Instead of Enum?**
-        ///
-        /// Different GPT models require different parameters in an HTTP request. For example, gpt-4 uses the parameter maxTokens to specify the maximum number of tokens, while gpt-o1 uses max_completion_tokens.
-        ///
-        /// From the standpoint of library implementation, it would be easiest for me to provide you with one large generic structure with all the fields, leaving you to figure out which parameters can be passed for the model you are using. However, I decided to make this process more convenient: depending on the selected GPT model, the internal generic type will change so that you configure the model only within the framework of parameters available to it.
-        ///
-        /// The most convenient way to implement such behavior is by using KeyPath, as it is essentially the only proper way to pass an object with a configuration, configure a generic type, and allow the use of autocompletion.
         /// - Parameters:
         ///   - model: KeyPath to used GPT model
         ///   - apiKey: Used API key. Do not pass (or set `nil`) to using key from global configuration (`OpenAI.Configuration.apiKey`)
         ///   - url: Used URL for requests.
-        init(model: KeyPath<OpenAI.ChatGPTModel, OpenAI.ChatGPTModel.Model<C>>,
+        init(model: GPTModel<C>,
              apiKey: OpenAI.APIKey? = nil,
              url: String = OpenAI.Configuration.url) {
-            let _model = OpenAI.ChatGPTModel()[keyPath: model].openAPIModel
-            self.model = .model(_model)
-            self.apiKey = apiKey
-            let clientTransport: ClientTransport
-#if os(Linux)
-            clientTransport = AsyncHTTPClientTransport()
-#else
-            clientTransport = URLSessionTransport()
-#endif
-            self.client = Client(
-                serverURL: URL(string: url)!,
-                transport: clientTransport,
-                middlewares: [AuthMiddleware(apiKey: apiKey)])
-        }
-        
-        /// Create new session with chat completions functional with custom GPT model name
-        ///
-        /// - Parameters:
-        ///   - customModelName: Name of using model.
-        ///   - apiKey: Used API key. Do not pass (or set `nil`) to using key from global configuration (`OpenAI.Configuration.apiKey`)
-        ///   - url: Used URL for requests.
-        init(customModelName: String,
-             apiKey: OpenAI.APIKey? = nil,
-             url: String = OpenAI.Configuration.url) where C == OpenAI.ChatCompletionsCommonConfiguration {
-            self.model = .custom(customModelName)
+            self.model = model
             self.apiKey = apiKey
             let clientTransport: ClientTransport
 #if os(Linux)
@@ -132,7 +93,7 @@ public extension OpenAI {
         ///   - userName: A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
         ///   - developerMessage: Developer-provided instructions that the model should follow, regardless of messages sent by the user.
         ///   - previousMessages: History of messages
-        ///   - configuration: Model configuration for current request
+        ///   - configuration: Model configuration for current request See [Chat completions API documentation](https://platform.openai.com/docs/api-reference/chat)
         public func completions(promt: String,
                                 image: Data? = nil,
                                 userName: String? = nil,
@@ -266,7 +227,7 @@ public extension OpenAI {
                                  configuration: C,
                                  stream: Bool) -> Operations.CreateChatCompletion.Input.Body {
             
-            let usingOpenAPIFormatModel: Components.Schemas.CreateChatCompletionRequest.ModelPayload = switch model {
+            let usingOpenAPIFormatModel: Components.Schemas.CreateChatCompletionRequest.ModelPayload = switch model.apiModel {
             case .model(let apiModel):
                     .init(value1: nil, value2: apiModel)
             case .custom(let modelName):

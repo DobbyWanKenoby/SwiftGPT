@@ -106,23 +106,15 @@ OpenAI.Configuration.url = "https://you_own_proxy_chatgpt.com"
 First create `OpenAI.Chat` instance with passing used model:
 
 ```swift
-// Pass KeyPath to used configuration of some model
-let chat = OpenAI.Chat(model: \.gpt4o)
+// Pass model version
+let chat = OpenAI.Chat(model: .gpt4o)
 ```
-
-> **Why use KeyPath instead of enum?**
->
-> Different GPT models use different parameters in an HTTP request. For example, gpt-4 uses the parameter maxTokens to specify the maximum number of tokens, while gpt-o1 uses max_completion_tokens.
->
-> From the standpoint of library implementation, it would be easiest for me to provide you with one large generic structure with all the fields, leaving you to figure out which parameters can be passed for the model you are using. However, I decided to make this process more convenient: depending on the selected GPT model, the internal generic type will change so that you configure the model only within the framework of parameters available to it.
->
-> The most convenient way to implement such behavior is by using KeyPath, as it is essentially the only proper way to pass an object with a configuration, configure a generic type, and allow the use of autocompletion.
 
 if current package have not KeyPath with needed model, you can use another `OpenAI.Chat.init` to pass custom model name:
 
 ```swift
 // Pass textual name of model
-let chat = OpenAI.Chat(customModelName: "gpt-4o-2024-11-20")
+let chat = OpenAI.Chat(model: .custom("gpt-4o-2024-11-20"))
 ```
 
 There are 2 APIs: stream and normal
