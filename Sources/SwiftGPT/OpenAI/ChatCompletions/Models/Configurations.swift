@@ -10,7 +10,7 @@
 public extension OpenAI {
     
     /// Field for all GPT models
-    protocol ChatCompletionsConfiguration {
+    protocol ChatCompletionsConfiguration: Sendable {
         var temperature: Double? { get set }
         var stop: [String]? { get set }
         /// How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep n as 1 to minimize costs.
@@ -40,7 +40,7 @@ public extension OpenAI {
     /// Configuration suitable for all objects. Has all properties.
     ///
     /// See the [official OpenAI API documentation](https://platform.openai.com/docs/api-reference/chat/create) to determine what parameters can be used with the model.
-    struct ChatCompletionsCommonConfiguration: ChatCompletionsConfiguration, ChatCompletionsWithMaxTokensParameter, ChatCompletionsWithMaxCompletionTokensParameter {
+    struct ChatCompletionsCommonConfiguration: Sendable, ChatCompletionsConfiguration, ChatCompletionsWithMaxTokensParameter, ChatCompletionsWithMaxCompletionTokensParameter {
         public var developerMessageKey: DeveloperMessageKey
         public var competionsNumber: Int?
         public var temperature: Double? = nil
@@ -54,7 +54,7 @@ public extension OpenAI {
     }
     
     /// Configuration for models chatGPT 3.5
-    struct ChatCompetionConfigurationGPT3Series: ChatCompletionsConfiguration, ChatCompletionsWithMaxTokensParameter, ChatCompletionsConfigurationWithDefaultConfiguration {
+    struct ChatCompetionConfigurationGPT3Series: Sendable, ChatCompletionsConfiguration, ChatCompletionsWithMaxTokensParameter, ChatCompletionsConfigurationWithDefaultConfiguration {
         public var developerMessageKey: DeveloperMessageKey { .system }
         public var competionsNumber: Int? = nil
         public var temperature: Double? = nil
@@ -65,7 +65,7 @@ public extension OpenAI {
     }
     
     /// Configuration for models chatGPT 4, 4o
-    struct ChatCompetionConfigurationGPT4Series: ChatCompletionsConfiguration, ChatCompletionsWithMaxTokensParameter, ChatCompletionsConfigurationWithDefaultConfiguration {
+    struct ChatCompetionConfigurationGPT4Series: Sendable, ChatCompletionsConfiguration, ChatCompletionsWithMaxTokensParameter, ChatCompletionsConfigurationWithDefaultConfiguration {
         public var developerMessageKey: DeveloperMessageKey { .system }
         public var competionsNumber: Int? = nil
         public var temperature: Double? = nil
@@ -76,7 +76,7 @@ public extension OpenAI {
     }
     
     /// Configuration for models chatGPT o1
-    struct ChatCompetionConfigurationGPTo1Series: ChatCompletionsConfiguration, ChatCompletionsWithMaxCompletionTokensParameter, ChatCompletionsConfigurationWithDefaultConfiguration {
+    struct ChatCompetionConfigurationGPTo1Series: Sendable, ChatCompletionsConfiguration, ChatCompletionsWithMaxCompletionTokensParameter, ChatCompletionsConfigurationWithDefaultConfiguration {
         public var developerMessageKey: DeveloperMessageKey { .developer }
         public var competionsNumber: Int? = nil
         public var temperature: Double? = nil
@@ -88,7 +88,7 @@ public extension OpenAI {
     
     // MARK: - Subtypes
     
-    enum DeveloperMessageKey {
+    enum DeveloperMessageKey: Sendable {
         case developer
         case system
     }

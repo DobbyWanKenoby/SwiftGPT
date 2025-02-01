@@ -27,7 +27,7 @@ public extension OpenAI {
     /// Functional for chating with ChatGPT
     ///
     /// Chat completions API documentation: [https://platform.openai.com/docs/api-reference/chat](https://platform.openai.com/docs/api-reference/chat)
-    final class Chat<C: ChatCompletionsConfiguration> {
+    final class Chat<C: ChatCompletionsConfiguration>: Sendable {
         
         private let client: Client
         
@@ -37,7 +37,7 @@ public extension OpenAI {
         /// Type of current model configuration
         ///
         /// Use current value for initialization new configuration for pass to completions method
-        var ConfigurationType: C.Type {
+        public var ConfigurationType: C.Type {
             model.ConfigurationType.self
         }
         
@@ -47,7 +47,7 @@ public extension OpenAI {
         ///   - model: KeyPath to used GPT model
         ///   - apiKey: Used API key. Do not pass (or set `nil`) to using key from global configuration (`OpenAI.Configuration.apiKey`)
         ///   - url: Used URL for requests.
-        init(model: GPTModel<C>,
+        public init(model: GPTModel<C>,
              apiKey: OpenAI.APIKey? = nil,
              url: String = OpenAI.Configuration.url) {
             self.model = model

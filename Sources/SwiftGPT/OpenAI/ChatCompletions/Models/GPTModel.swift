@@ -6,7 +6,7 @@
 //
 
 extension OpenAI.Chat {
-    public struct GPTModel<Configuration> {
+    public struct GPTModel<Configuration>: Sendable {
         
         let ConfigurationType: Configuration.Type
         let apiModel: UsingModelType

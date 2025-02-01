@@ -13,7 +13,7 @@ import OpenAPIRuntime
     import OpenAPIURLSession
 #endif
 
-public enum OpenAI {}
+public enum OpenAI: Sendable {}
 
 public extension OpenAI {
 
