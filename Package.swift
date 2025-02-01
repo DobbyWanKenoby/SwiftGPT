@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftGPT",
-    platforms: [.iOS(.v18), .macOS(.v15), .tvOS(.v18), .watchOS(.v11)],
+    platforms: [.iOS(.v15), .macOS(.v12), .tvOS(.v15), .watchOS(.v8)],
     products: [
         .library(
             name: "SwiftGPT",

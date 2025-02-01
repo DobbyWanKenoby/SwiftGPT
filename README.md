@@ -1,6 +1,6 @@
 # SwiftGPT
 
-![my badge](https://badgen.net/static/SPM/compatible/green) ![my badge](https://badgen.net/static/Swift/6&nbsp;|&nbsp;5.10/orange) ![my badge](https://badgen.net/static/license/MIT/blue)
+![my badge](https://badgen.net/static/SPM/compatible/green) ![my badge](https://badgen.net/static/Swift/6/orange) ![my badge](https://badgen.net/static/license/MIT/blue)
 
 Access OpenAI ChatGPT Official API using Swift. 
 
@@ -28,10 +28,28 @@ Current project based on a [ChatGPTSwift](https://github.com/alfianlosari/ChatGP
 
 ## Supported Platforms
 
-- iOS/tvOS 18 and above
-- macOS 15 and above
-- watchOS 11 and above
+- iOS/tvOS 15 and above
+- macOS 12 and above
+- watchOS 8 and above
 - Linux
+
+### Use SwiftGPT with Swift 5.10 and older
+
+By default, the current Swift version compatible with the package is 6.0, but you can use it with previous versions of language.
+
+In Swift 5.7 a new syntax for regular expressions (`/_regex_here_/`) was added, which is used in this package. Up until Swift 6.0, its usage in SPM packages was restricted with the flag `-enable-bare-slash-regex`, although no issues arose when used in applications. If I manually add this flag to the package target, you will not be able to connect the package from my GitHub (using remote packages with unsafe flags not possible).
+
+To work around this limitation, do the following:
+
+- Clone the package for local inclusion in your project.
+- In the Package.swift file, change the Swift version to 5.10 (or another required version)
+```swift
+// swift-tools-version: 5.10
+```
+- Add the flag -enable-bare-slash-regex in the SwiftGPT target initializer
+```swift
+swiftSettings: [.unsafeFlags(["-enable-bare-slash-regex"])]
+```
 
 ## Installation
 
