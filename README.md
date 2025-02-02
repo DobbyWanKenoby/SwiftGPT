@@ -28,9 +28,9 @@ Current project based on a [ChatGPTSwift](https://github.com/alfianlosari/ChatGP
 
 ## Supported Platforms
 
-- iOS/tvOS 15 and above
-- macOS 12 and above
-- watchOS 8 and above
+- iOS/tvOS 16 and above
+- macOS 13 and above
+- watchOS 9 and above
 - Linux
 
 ### Use SwiftGPT with Swift 5.10 and older

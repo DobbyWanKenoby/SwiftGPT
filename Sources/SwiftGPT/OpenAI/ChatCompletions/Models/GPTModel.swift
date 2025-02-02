@@ -66,7 +66,10 @@ public extension OpenAI.Chat.GPTModel where Configuration == OpenAI.ChatCompetio
     }
 }
 
-public extension OpenAI.Chat.GPTModel where Configuration == OpenAI.ChatCompetionConfigurationGPTo1Series {
+public extension OpenAI.Chat.GPTModel where Configuration == OpenAI.ChatCompetionConfigurationGPToSeries {
+    static var gpt_o3_mini: Self {
+        .init(Configuration.self, .o3Mini)
+    }
     static var gpt_o1: Self {
         .init(Configuration.self, .o1)
     }

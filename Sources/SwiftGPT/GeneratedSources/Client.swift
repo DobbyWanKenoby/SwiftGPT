@@ -6171,6 +6171,13 @@ public struct Client: APIProtocol {
                     name: "after",
                     value: input.query.after
                 )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "emails",
+                    value: input.query.emails
+                )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
                     contentTypes: input.headers.accept

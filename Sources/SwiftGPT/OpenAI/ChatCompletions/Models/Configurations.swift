@@ -76,7 +76,7 @@ public extension OpenAI {
     }
     
     /// Configuration for models chatGPT o1
-    struct ChatCompetionConfigurationGPTo1Series: Sendable, ChatCompletionsConfiguration, ChatCompletionsWithMaxCompletionTokensParameter, ChatCompletionsConfigurationWithDefaultConfiguration {
+    struct ChatCompetionConfigurationGPToSeries: Sendable, ChatCompletionsConfiguration, ChatCompletionsWithMaxCompletionTokensParameter, ChatCompletionsConfigurationWithDefaultConfiguration {
         public var developerMessageKey: DeveloperMessageKey { .developer }
         public var competionsNumber: Int? = nil
         public var temperature: Double? = nil

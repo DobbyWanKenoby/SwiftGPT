@@ -2528,11 +2528,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/AssistantObject/tool_resources`.
             public var toolResources: Components.Schemas.AssistantObject.ToolResourcesPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/AssistantObject/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///
             ///
@@ -2586,7 +2583,7 @@ public enum Components {
             ///   - instructions: The system instructions that the assistant uses. The maximum length is 256,000 characters.
             ///   - tools: A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
             ///   - toolResources: A set of resources that are used by the assistant's tools. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             ///   - temperature: What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///   - topP: An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
             ///   - responseFormat:
@@ -2600,7 +2597,7 @@ public enum Components {
                 instructions: Swift.String? = nil,
                 tools: Components.Schemas.AssistantObject.ToolsPayload,
                 toolResources: Components.Schemas.AssistantObject.ToolResourcesPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil,
+                metadata: Components.Schemas.Metadata? = nil,
                 temperature: Swift.Double? = nil,
                 topP: Swift.Double? = nil,
                 responseFormat: Components.Schemas.AssistantObject.ResponseFormatPayload? = nil
@@ -4557,11 +4554,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/Batch/request_counts`.
             public var requestCounts: Components.Schemas.Batch.RequestCountsPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/Batch/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `Batch`.
             ///
             /// - Parameters:
@@ -4584,7 +4578,7 @@ public enum Components {
             ///   - cancellingAt: The Unix timestamp (in seconds) for when the batch started cancelling.
             ///   - cancelledAt: The Unix timestamp (in seconds) for when the batch was cancelled.
             ///   - requestCounts: The request counts for different statuses within the batch.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             public init(
                 id: Swift.String,
                 object: Components.Schemas.Batch.ObjectPayload,
@@ -4605,7 +4599,7 @@ public enum Components {
                 cancellingAt: Swift.Int? = nil,
                 cancelledAt: Swift.Int? = nil,
                 requestCounts: Components.Schemas.Batch.RequestCountsPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil
+                metadata: Components.Schemas.Metadata? = nil
             ) {
                 self.id = id
                 self.object = object
@@ -7027,11 +7021,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/CreateAssistantRequest/tool_resources`.
             public var toolResources: Components.Schemas.CreateAssistantRequest.ToolResourcesPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/CreateAssistantRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///
             ///
@@ -7082,7 +7073,7 @@ public enum Components {
             ///   - instructions: The system instructions that the assistant uses. The maximum length is 256,000 characters.
             ///   - tools: A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
             ///   - toolResources: A set of resources that are used by the assistant's tools. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             ///   - temperature: What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///   - topP: An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
             ///   - responseFormat:
@@ -7093,7 +7084,7 @@ public enum Components {
                 instructions: Swift.String? = nil,
                 tools: Components.Schemas.CreateAssistantRequest.ToolsPayload? = nil,
                 toolResources: Components.Schemas.CreateAssistantRequest.ToolResourcesPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil,
+                metadata: Components.Schemas.Metadata? = nil,
                 temperature: Swift.Double? = nil,
                 topP: Swift.Double? = nil,
                 responseFormat: Components.Schemas.CreateAssistantRequest.ResponseFormatPayload? = nil
@@ -7148,7 +7139,7 @@ public enum Components {
                     forKey: .toolResources
                 )
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 self.temperature = try container.decodeIfPresent(
@@ -7323,6 +7314,8 @@ public enum Components {
                 public var value1: Swift.String?
                 /// - Remark: Generated from `#/components/schemas/CreateChatCompletionRequest/model/value2`.
                 @frozen public enum Value2Payload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case o3Mini = "o3-mini"
+                    case o3Mini20250131 = "o3-mini-2025-01-31"
                     case o1 = "o1"
                     case o120241217 = "o1-2024-12-17"
                     case o1Preview = "o1-preview"
@@ -7441,34 +7434,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/CreateChatCompletionRequest/reasoning_effort`.
             public var reasoningEffort: Components.Schemas.CreateChatCompletionRequest.ReasoningEffortPayload?
-            /// Developer-defined tags and values used for filtering completions
-            /// in the [dashboard](https://platform.openai.com/chat-completions).
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/CreateChatCompletionRequest/metadata`.
-            public struct MetadataPayload: Codable, Hashable, Sendable {
-                /// A container of undocumented properties.
-                public var additionalProperties: [String: Swift.String]
-                /// Creates a new `MetadataPayload`.
-                ///
-                /// - Parameters:
-                ///   - additionalProperties: A container of undocumented properties.
-                public init(additionalProperties: [String: Swift.String] = .init()) {
-                    self.additionalProperties = additionalProperties
-                }
-                public init(from decoder: any Decoder) throws {
-                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try encoder.encodeAdditionalProperties(additionalProperties)
-                }
-            }
-            /// Developer-defined tags and values used for filtering completions
-            /// in the [dashboard](https://platform.openai.com/chat-completions).
-            ///
-            ///
-            /// - Remark: Generated from `#/components/schemas/CreateChatCompletionRequest/metadata`.
-            public var metadata: Components.Schemas.CreateChatCompletionRequest.MetadataPayload?
+            public var metadata: Components.Schemas.Metadata?
             /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
             /// their existing frequency in the text so far, decreasing the model's
             /// likelihood to repeat the same line verbatim.
@@ -7758,8 +7725,8 @@ public enum Components {
             public var seed: Swift.Int64?
             /// Specifies the latency tier to use for processing the request. This parameter is relevant for customers subscribed to the scale tier service:
             ///   - If set to 'auto', and the Project is Scale tier enabled, the system will utilize scale tier credits until they are exhausted.
-            ///   - If set to 'auto', and the Project is not Scale tier enabled, the request will be processed using the default service tier with a lower uptime SLA and no latency guarentee.
-            ///   - If set to 'default', the request will be processed using the default service tier with a lower uptime SLA and no latency guarentee.
+            ///   - If set to 'auto', and the Project is not Scale tier enabled, the request will be processed using the default service tier with a lower uptime SLA and no latency guarantee.
+            ///   - If set to 'default', the request will be processed using the default service tier with a lower uptime SLA and no latency guarantee.
             ///   - When not set, the default behavior is 'auto'.
             ///
             ///
@@ -7770,8 +7737,8 @@ public enum Components {
             }
             /// Specifies the latency tier to use for processing the request. This parameter is relevant for customers subscribed to the scale tier service:
             ///   - If set to 'auto', and the Project is Scale tier enabled, the system will utilize scale tier credits until they are exhausted.
-            ///   - If set to 'auto', and the Project is not Scale tier enabled, the request will be processed using the default service tier with a lower uptime SLA and no latency guarentee.
-            ///   - If set to 'default', the request will be processed using the default service tier with a lower uptime SLA and no latency guarentee.
+            ///   - If set to 'auto', and the Project is not Scale tier enabled, the request will be processed using the default service tier with a lower uptime SLA and no latency guarantee.
+            ///   - If set to 'default', the request will be processed using the default service tier with a lower uptime SLA and no latency guarantee.
             ///   - When not set, the default behavior is 'auto'.
             ///
             ///
@@ -7955,7 +7922,7 @@ public enum Components {
             ///   - model: ID of the model to use. See the [model endpoint compatibility](/docs/models#model-endpoint-compatibility) table for details on which models work with the Chat API.
             ///   - store: Whether or not to store the output of this chat completion request for 
             ///   - reasoningEffort: **o1 models only** 
-            ///   - metadata: Developer-defined tags and values used for filtering completions
+            ///   - metadata:
             ///   - frequencyPenalty: Number between -2.0 and 2.0. Positive values penalize new tokens based on
             ///   - logitBias: Modify the likelihood of specified tokens appearing in the completion.
             ///   - logprobs: Whether to return log probabilities of the output tokens or not. If true,
@@ -7986,7 +7953,7 @@ public enum Components {
                 model: Components.Schemas.CreateChatCompletionRequest.ModelPayload,
                 store: Swift.Bool? = nil,
                 reasoningEffort: Components.Schemas.CreateChatCompletionRequest.ReasoningEffortPayload? = nil,
-                metadata: Components.Schemas.CreateChatCompletionRequest.MetadataPayload? = nil,
+                metadata: Components.Schemas.Metadata? = nil,
                 frequencyPenalty: Swift.Double? = nil,
                 logitBias: Components.Schemas.CreateChatCompletionRequest.LogitBiasPayload? = nil,
                 logprobs: Swift.Bool? = nil,
@@ -10348,23 +10315,20 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/CreateMessageRequest/attachments`.
             public var attachments: Components.Schemas.CreateMessageRequest.AttachmentsPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/CreateMessageRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `CreateMessageRequest`.
             ///
             /// - Parameters:
             ///   - role: The role of the entity that is creating the message. Allowed values include:
             ///   - content:
             ///   - attachments: A list of files attached to the message, and the tools they should be added to.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             public init(
                 role: Components.Schemas.CreateMessageRequest.RolePayload,
                 content: Components.Schemas.CreateMessageRequest.ContentPayload,
                 attachments: Components.Schemas.CreateMessageRequest.AttachmentsPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil
+                metadata: Components.Schemas.Metadata? = nil
             ) {
                 self.role = role
                 self.content = content
@@ -10392,7 +10356,7 @@ public enum Components {
                     forKey: .attachments
                 )
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 try decoder.ensureNoAdditionalProperties(knownKeys: [
@@ -11377,11 +11341,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/CreateRunRequest/tools`.
             public var tools: Components.Schemas.CreateRunRequest.ToolsPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/CreateRunRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///
             ///
@@ -11507,7 +11468,7 @@ public enum Components {
             ///   - additionalInstructions: Appends additional instructions at the end of the instructions for the run. This is useful for modifying the behavior on a per-run basis without overriding other instructions.
             ///   - additionalMessages: Adds additional messages to the thread before creating the run.
             ///   - tools: Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             ///   - temperature: What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///   - topP: An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
             ///   - stream: If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message.
@@ -11524,7 +11485,7 @@ public enum Components {
                 additionalInstructions: Swift.String? = nil,
                 additionalMessages: [Components.Schemas.CreateMessageRequest]? = nil,
                 tools: Components.Schemas.CreateRunRequest.ToolsPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil,
+                metadata: Components.Schemas.Metadata? = nil,
                 temperature: Swift.Double? = nil,
                 topP: Swift.Double? = nil,
                 stream: Swift.Bool? = nil,
@@ -11597,7 +11558,7 @@ public enum Components {
                     forKey: .tools
                 )
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 self.temperature = try container.decodeIfPresent(
@@ -12030,11 +11991,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/CreateThreadAndRunRequest/tool_resources`.
             public var toolResources: Components.Schemas.CreateThreadAndRunRequest.ToolResourcesPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/CreateThreadAndRunRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///
             ///
@@ -12160,7 +12118,7 @@ public enum Components {
             ///   - instructions: Override the default system message of the assistant. This is useful for modifying the behavior on a per-run basis.
             ///   - tools: Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
             ///   - toolResources: A set of resources that are used by the assistant's tools. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             ///   - temperature: What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///   - topP: An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
             ///   - stream: If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message.
@@ -12177,7 +12135,7 @@ public enum Components {
                 instructions: Swift.String? = nil,
                 tools: Components.Schemas.CreateThreadAndRunRequest.ToolsPayload? = nil,
                 toolResources: Components.Schemas.CreateThreadAndRunRequest.ToolResourcesPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil,
+                metadata: Components.Schemas.Metadata? = nil,
                 temperature: Swift.Double? = nil,
                 topP: Swift.Double? = nil,
                 stream: Swift.Bool? = nil,
@@ -12250,7 +12208,7 @@ public enum Components {
                     forKey: .toolResources
                 )
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 self.temperature = try container.decodeIfPresent(
@@ -12413,21 +12371,18 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/CreateThreadRequest/tool_resources`.
             public var toolResources: Components.Schemas.CreateThreadRequest.ToolResourcesPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/CreateThreadRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `CreateThreadRequest`.
             ///
             /// - Parameters:
             ///   - messages: A list of [messages](/docs/api-reference/messages) to start the thread with.
             ///   - toolResources: A set of resources that are made available to the assistant's tools in this thread. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             public init(
                 messages: [Components.Schemas.CreateMessageRequest]? = nil,
                 toolResources: Components.Schemas.CreateThreadRequest.ToolResourcesPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil
+                metadata: Components.Schemas.Metadata? = nil
             ) {
                 self.messages = messages
                 self.toolResources = toolResources
@@ -12449,7 +12404,7 @@ public enum Components {
                     forKey: .toolResources
                 )
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 try decoder.ensureNoAdditionalProperties(knownKeys: [
@@ -12960,11 +12915,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/CreateVectorStoreRequest/chunking_strategy`.
             public var chunkingStrategy: Components.Schemas.CreateVectorStoreRequest.ChunkingStrategyPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/CreateVectorStoreRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `CreateVectorStoreRequest`.
             ///
             /// - Parameters:
@@ -12972,13 +12924,13 @@ public enum Components {
             ///   - name: The name of the vector store.
             ///   - expiresAfter:
             ///   - chunkingStrategy: The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             public init(
                 fileIds: [Swift.String]? = nil,
                 name: Swift.String? = nil,
                 expiresAfter: Components.Schemas.VectorStoreExpirationAfter? = nil,
                 chunkingStrategy: Components.Schemas.CreateVectorStoreRequest.ChunkingStrategyPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil
+                metadata: Components.Schemas.Metadata? = nil
             ) {
                 self.fileIds = fileIds
                 self.name = name
@@ -13012,7 +12964,7 @@ public enum Components {
                     forKey: .chunkingStrategy
                 )
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 try decoder.ensureNoAdditionalProperties(knownKeys: [
@@ -17262,11 +17214,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/MessageObject/attachments`.
             public var attachments: Components.Schemas.MessageObject.AttachmentsPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/MessageObject/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `MessageObject`.
             ///
             /// - Parameters:
@@ -17283,7 +17232,7 @@ public enum Components {
             ///   - assistantId: If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
             ///   - runId: The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
             ///   - attachments: A list of files attached to the message, and the tools they were added to.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             public init(
                 id: Swift.String,
                 object: Components.Schemas.MessageObject.ObjectPayload,
@@ -17298,7 +17247,7 @@ public enum Components {
                 assistantId: Swift.String? = nil,
                 runId: Swift.String? = nil,
                 attachments: Components.Schemas.MessageObject.AttachmentsPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil
+                metadata: Components.Schemas.Metadata? = nil
             ) {
                 self.id = id
                 self.object = object
@@ -17587,6 +17536,32 @@ public enum Components {
                 }
             }
         }
+        /// Set of 16 key-value pairs that can be attached to an object. This can be
+        /// useful for storing additional information about the object in a structured
+        /// format, and querying for objects via API or the dashboard. 
+        ///
+        /// Keys are strings with a maximum length of 64 characters. Values are strings
+        /// with a maximum length of 512 characters.
+        ///
+        ///
+        /// - Remark: Generated from `#/components/schemas/Metadata`.
+        public struct Metadata: Codable, Hashable, Sendable {
+            /// A container of undocumented properties.
+            public var additionalProperties: [String: Swift.String]
+            /// Creates a new `Metadata`.
+            ///
+            /// - Parameters:
+            ///   - additionalProperties: A container of undocumented properties.
+            public init(additionalProperties: [String: Swift.String] = .init()) {
+                self.additionalProperties = additionalProperties
+            }
+            public init(from decoder: any Decoder) throws {
+                additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+            }
+            public func encode(to encoder: any Encoder) throws {
+                try encoder.encodeAdditionalProperties(additionalProperties)
+            }
+        }
         /// Describes an OpenAI model offering that can be used with the API.
         ///
         /// - Remark: Generated from `#/components/schemas/Model`.
@@ -17818,11 +17793,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/ModifyAssistantRequest/tool_resources`.
             public var toolResources: Components.Schemas.ModifyAssistantRequest.ToolResourcesPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/ModifyAssistantRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///
             ///
@@ -17873,7 +17845,7 @@ public enum Components {
             ///   - instructions: The system instructions that the assistant uses. The maximum length is 256,000 characters.
             ///   - tools: A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
             ///   - toolResources: A set of resources that are used by the assistant's tools. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             ///   - temperature: What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
             ///   - topP: An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
             ///   - responseFormat:
@@ -17884,7 +17856,7 @@ public enum Components {
                 instructions: Swift.String? = nil,
                 tools: Components.Schemas.ModifyAssistantRequest.ToolsPayload? = nil,
                 toolResources: Components.Schemas.ModifyAssistantRequest.ToolResourcesPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil,
+                metadata: Components.Schemas.Metadata? = nil,
                 temperature: Swift.Double? = nil,
                 topP: Swift.Double? = nil,
                 responseFormat: Components.Schemas.ModifyAssistantRequest.ResponseFormatPayload? = nil
@@ -17939,7 +17911,7 @@ public enum Components {
                     forKey: .toolResources
                 )
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 self.temperature = try container.decodeIfPresent(
@@ -17970,16 +17942,13 @@ public enum Components {
         }
         /// - Remark: Generated from `#/components/schemas/ModifyMessageRequest`.
         public struct ModifyMessageRequest: Codable, Hashable, Sendable {
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/ModifyMessageRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `ModifyMessageRequest`.
             ///
             /// - Parameters:
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            public init(metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil) {
+            ///   - metadata:
+            public init(metadata: Components.Schemas.Metadata? = nil) {
                 self.metadata = metadata
             }
             public enum CodingKeys: String, CodingKey {
@@ -17988,7 +17957,7 @@ public enum Components {
             public init(from decoder: any Decoder) throws {
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 try decoder.ensureNoAdditionalProperties(knownKeys: [
@@ -17998,16 +17967,13 @@ public enum Components {
         }
         /// - Remark: Generated from `#/components/schemas/ModifyRunRequest`.
         public struct ModifyRunRequest: Codable, Hashable, Sendable {
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/ModifyRunRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `ModifyRunRequest`.
             ///
             /// - Parameters:
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            public init(metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil) {
+            ///   - metadata:
+            public init(metadata: Components.Schemas.Metadata? = nil) {
                 self.metadata = metadata
             }
             public enum CodingKeys: String, CodingKey {
@@ -18016,7 +17982,7 @@ public enum Components {
             public init(from decoder: any Decoder) throws {
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 try decoder.ensureNoAdditionalProperties(knownKeys: [
@@ -18093,19 +18059,16 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/ModifyThreadRequest/tool_resources`.
             public var toolResources: Components.Schemas.ModifyThreadRequest.ToolResourcesPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/ModifyThreadRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `ModifyThreadRequest`.
             ///
             /// - Parameters:
             ///   - toolResources: A set of resources that are made available to the assistant's tools in this thread. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             public init(
                 toolResources: Components.Schemas.ModifyThreadRequest.ToolResourcesPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil
+                metadata: Components.Schemas.Metadata? = nil
             ) {
                 self.toolResources = toolResources
                 self.metadata = metadata
@@ -18121,7 +18084,7 @@ public enum Components {
                     forKey: .toolResources
                 )
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 try decoder.ensureNoAdditionalProperties(knownKeys: [
@@ -20214,11 +20177,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/RealtimeResponse/output`.
             public var output: [Components.Schemas.RealtimeConversationItem]?
-            /// Developer-provided string key-value pairs associated with this response.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/RealtimeResponse/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Usage statistics for the Response, this will correspond to billing. A 
             /// Realtime API session will maintain a conversation context and append new 
             /// Items to the Conversation, thus output from previous turns (text and 
@@ -20356,6 +20316,127 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/RealtimeResponse/usage`.
             public var usage: Components.Schemas.RealtimeResponse.UsagePayload?
+            /// Which conversation the response is added to, determined by the `conversation`
+            /// field in the `response.create` event. If `auto`, the response will be added to
+            /// the default conversation and the value of `conversation_id` will be an id like
+            /// `conv_1234`. If `none`, the response will not be added to any conversation and
+            /// the value of `conversation_id` will be `null`. If responses are being triggered
+            /// by server VAD, the response will be added to the default conversation, thus
+            /// the `conversation_id` will be an id like `conv_1234`.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/conversation_id`.
+            public var conversationId: Swift.String?
+            /// The voice the model used to respond.
+            /// Current voice options are `alloy`, `ash`, `ballad`, `coral`, `echo` `sage`, 
+            /// `shimmer` and `verse`.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/voice`.
+            @frozen public enum VoicePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case alloy = "alloy"
+                case ash = "ash"
+                case ballad = "ballad"
+                case coral = "coral"
+                case echo = "echo"
+                case sage = "sage"
+                case shimmer = "shimmer"
+                case verse = "verse"
+            }
+            /// The voice the model used to respond.
+            /// Current voice options are `alloy`, `ash`, `ballad`, `coral`, `echo` `sage`, 
+            /// `shimmer` and `verse`.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/voice`.
+            public var voice: Components.Schemas.RealtimeResponse.VoicePayload?
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/ModalitiesPayload`.
+            @frozen public enum ModalitiesPayloadPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case text = "text"
+                case audio = "audio"
+            }
+            /// The set of modalities the model used to respond. If there are multiple modalities,
+            /// the model will pick one, for example if `modalities` is `["text", "audio"]`, the model
+            /// could be responding in either text or audio.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/modalities`.
+            public typealias ModalitiesPayload = [Components.Schemas.RealtimeResponse.ModalitiesPayloadPayload]
+            /// The set of modalities the model used to respond. If there are multiple modalities,
+            /// the model will pick one, for example if `modalities` is `["text", "audio"]`, the model
+            /// could be responding in either text or audio.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/modalities`.
+            public var modalities: Components.Schemas.RealtimeResponse.ModalitiesPayload?
+            /// The format of output audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/output_audio_format`.
+            @frozen public enum OutputAudioFormatPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case pcm16 = "pcm16"
+                case g711Ulaw = "g711_ulaw"
+                case g711Alaw = "g711_alaw"
+            }
+            /// The format of output audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/output_audio_format`.
+            public var outputAudioFormat: Components.Schemas.RealtimeResponse.OutputAudioFormatPayload?
+            /// Sampling temperature for the model, limited to [0.6, 1.2]. Defaults to 0.8.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/temperature`.
+            public var temperature: Swift.Double?
+            /// Maximum number of output tokens for a single assistant response,
+            /// inclusive of tool calls, that was used in this response.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/max_output_tokens`.
+            @frozen public enum MaxOutputTokensPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/RealtimeResponse/max_output_tokens/case1`.
+                case case1(Swift.Int)
+                /// - Remark: Generated from `#/components/schemas/RealtimeResponse/max_output_tokens/case2`.
+                @frozen public enum Case2Payload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case inf = "inf"
+                }
+                /// - Remark: Generated from `#/components/schemas/RealtimeResponse/max_output_tokens/case2`.
+                case case2(Components.Schemas.RealtimeResponse.MaxOutputTokensPayload.Case2Payload)
+                public init(from decoder: any Decoder) throws {
+                    var errors: [any Error] = []
+                    do {
+                        self = .case1(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Encoder) throws {
+                    switch self {
+                    case let .case1(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Maximum number of output tokens for a single assistant response,
+            /// inclusive of tool calls, that was used in this response.
+            ///
+            ///
+            /// - Remark: Generated from `#/components/schemas/RealtimeResponse/max_output_tokens`.
+            public var maxOutputTokens: Components.Schemas.RealtimeResponse.MaxOutputTokensPayload?
             /// Creates a new `RealtimeResponse`.
             ///
             /// - Parameters:
@@ -20364,16 +20445,28 @@ public enum Components {
             ///   - status: The final status of the response (`completed`, `cancelled`, `failed`, or 
             ///   - statusDetails: Additional details about the status.
             ///   - output: The list of output items generated by the response.
-            ///   - metadata: Developer-provided string key-value pairs associated with this response.
+            ///   - metadata:
             ///   - usage: Usage statistics for the Response, this will correspond to billing. A 
+            ///   - conversationId: Which conversation the response is added to, determined by the `conversation`
+            ///   - voice: The voice the model used to respond.
+            ///   - modalities: The set of modalities the model used to respond. If there are multiple modalities,
+            ///   - outputAudioFormat: The format of output audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
+            ///   - temperature: Sampling temperature for the model, limited to [0.6, 1.2]. Defaults to 0.8.
+            ///   - maxOutputTokens: Maximum number of output tokens for a single assistant response,
             public init(
                 id: Swift.String? = nil,
                 object: Components.Schemas.RealtimeResponse.ObjectPayload? = nil,
                 status: Components.Schemas.RealtimeResponse.StatusPayload? = nil,
                 statusDetails: Components.Schemas.RealtimeResponse.StatusDetailsPayload? = nil,
                 output: [Components.Schemas.RealtimeConversationItem]? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil,
-                usage: Components.Schemas.RealtimeResponse.UsagePayload? = nil
+                metadata: Components.Schemas.Metadata? = nil,
+                usage: Components.Schemas.RealtimeResponse.UsagePayload? = nil,
+                conversationId: Swift.String? = nil,
+                voice: Components.Schemas.RealtimeResponse.VoicePayload? = nil,
+                modalities: Components.Schemas.RealtimeResponse.ModalitiesPayload? = nil,
+                outputAudioFormat: Components.Schemas.RealtimeResponse.OutputAudioFormatPayload? = nil,
+                temperature: Swift.Double? = nil,
+                maxOutputTokens: Components.Schemas.RealtimeResponse.MaxOutputTokensPayload? = nil
             ) {
                 self.id = id
                 self.object = object
@@ -20382,6 +20475,12 @@ public enum Components {
                 self.output = output
                 self.metadata = metadata
                 self.usage = usage
+                self.conversationId = conversationId
+                self.voice = voice
+                self.modalities = modalities
+                self.outputAudioFormat = outputAudioFormat
+                self.temperature = temperature
+                self.maxOutputTokens = maxOutputTokens
             }
             public enum CodingKeys: String, CodingKey {
                 case id
@@ -20391,6 +20490,12 @@ public enum Components {
                 case output
                 case metadata
                 case usage
+                case conversationId = "conversation_id"
+                case voice
+                case modalities
+                case outputAudioFormat = "output_audio_format"
+                case temperature
+                case maxOutputTokens = "max_output_tokens"
             }
         }
         /// Create a new Realtime response with these parameters
@@ -20649,14 +20754,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/RealtimeResponseCreateParams/conversation`.
             public var conversation: Components.Schemas.RealtimeResponseCreateParams.ConversationPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be
-            /// useful for storing additional information about the object in a structured
-            /// format. Keys can be a maximum of 64 characters long and values can be a
-            /// maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/RealtimeResponseCreateParams/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Input items to include in the prompt for the model. Creates a new context
             /// for this response, without including the default conversation. Can include
             /// references to items from the default conversation.
@@ -20676,7 +20775,7 @@ public enum Components {
             ///   - temperature: Sampling temperature for the model, limited to [0.6, 1.2]. Defaults to 0.8.
             ///   - maxResponseOutputTokens: Maximum number of output tokens for a single assistant response,
             ///   - conversation: Controls which conversation the response is added to. Currently supports
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be
+            ///   - metadata:
             ///   - input: Input items to include in the prompt for the model. Creates a new context
             public init(
                 modalities: Components.Schemas.RealtimeResponseCreateParams.ModalitiesPayload? = nil,
@@ -20688,7 +20787,7 @@ public enum Components {
                 temperature: Swift.Double? = nil,
                 maxResponseOutputTokens: Components.Schemas.RealtimeResponseCreateParams.MaxResponseOutputTokensPayload? = nil,
                 conversation: Components.Schemas.RealtimeResponseCreateParams.ConversationPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil,
+                metadata: Components.Schemas.Metadata? = nil,
                 input: [Components.Schemas.RealtimeConversationItem]? = nil
             ) {
                 self.modalities = modalities
@@ -23289,11 +23388,7 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateRequest/output_audio_format`.
             public var outputAudioFormat: Components.Schemas.RealtimeSessionCreateRequest.OutputAudioFormatPayload?
-            /// Configuration for input audio transcription, defaults to off and can be 
-            /// set to `null` to turn off once on. Input audio transcription is not native 
-            /// to the model, since the model consumes audio directly. Transcription runs 
-            /// asynchronously through Whisper and should be treated as rough guidance 
-            /// rather than the representation understood by the model.
+            /// Configuration for input audio transcription, defaults to off and can be  set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs  asynchronously through [OpenAI Whisper transcription](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as rough guidance rather than the representation understood by the model. The client can optionally set the language and prompt for transcription, these fields will be passed to the Whisper API.
             ///
             ///
             /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateRequest/input_audio_transcription`.
@@ -23304,22 +23399,42 @@ public enum Components {
                 ///
                 /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateRequest/input_audio_transcription/model`.
                 public var model: Swift.String?
+                /// The language of the input audio. Supplying the input language in
+                /// [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
+                /// will improve accuracy and latency.
+                ///
+                ///
+                /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateRequest/input_audio_transcription/language`.
+                public var language: Swift.String?
+                /// An optional text to guide the model's style or continue a previous audio
+                /// segment. The [prompt](/docs/guides/speech-to-text#prompting) should match
+                /// the audio language.
+                ///
+                ///
+                /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateRequest/input_audio_transcription/prompt`.
+                public var prompt: Swift.String?
                 /// Creates a new `InputAudioTranscriptionPayload`.
                 ///
                 /// - Parameters:
                 ///   - model: The model to use for transcription, `whisper-1` is the only currently 
-                public init(model: Swift.String? = nil) {
+                ///   - language: The language of the input audio. Supplying the input language in
+                ///   - prompt: An optional text to guide the model's style or continue a previous audio
+                public init(
+                    model: Swift.String? = nil,
+                    language: Swift.String? = nil,
+                    prompt: Swift.String? = nil
+                ) {
                     self.model = model
+                    self.language = language
+                    self.prompt = prompt
                 }
                 public enum CodingKeys: String, CodingKey {
                     case model
+                    case language
+                    case prompt
                 }
             }
-            /// Configuration for input audio transcription, defaults to off and can be 
-            /// set to `null` to turn off once on. Input audio transcription is not native 
-            /// to the model, since the model consumes audio directly. Transcription runs 
-            /// asynchronously through Whisper and should be treated as rough guidance 
-            /// rather than the representation understood by the model.
+            /// Configuration for input audio transcription, defaults to off and can be  set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs  asynchronously through [OpenAI Whisper transcription](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as rough guidance rather than the representation understood by the model. The client can optionally set the language and prompt for transcription, these fields will be passed to the Whisper API.
             ///
             ///
             /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateRequest/input_audio_transcription`.
@@ -23531,7 +23646,7 @@ public enum Components {
             ///   - voice: The voice the model uses to respond. Voice cannot be changed during the 
             ///   - inputAudioFormat: The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
             ///   - outputAudioFormat: The format of output audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
-            ///   - inputAudioTranscription: Configuration for input audio transcription, defaults to off and can be 
+            ///   - inputAudioTranscription: Configuration for input audio transcription, defaults to off and can be  set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs  asynchronously through [OpenAI Whisper transcription](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as rough guidance rather than the representation understood by the model. The client can optionally set the language and prompt for transcription, these fields will be passed to the Whisper API.
             ///   - turnDetection: Configuration for turn detection. Can be set to `null` to turn off. Server 
             ///   - tools: Tools (functions) available to the model.
             ///   - toolChoice: How the model chooses tools. Options are `auto`, `none`, `required`, or 
@@ -23595,21 +23710,21 @@ public enum Components {
                 ///
                 ///
                 /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateResponse/client_secret/value`.
-                public var value: Swift.String?
+                public var value: Swift.String
                 /// Timestamp for when the token expires. Currently, all tokens expire
                 /// after one minute.
                 ///
                 ///
                 /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateResponse/client_secret/expires_at`.
-                public var expiresAt: Swift.Int?
+                public var expiresAt: Swift.Int
                 /// Creates a new `ClientSecretPayload`.
                 ///
                 /// - Parameters:
                 ///   - value: Ephemeral key usable in client environments to authenticate connections
                 ///   - expiresAt: Timestamp for when the token expires. Currently, all tokens expire
                 public init(
-                    value: Swift.String? = nil,
-                    expiresAt: Swift.Int? = nil
+                    value: Swift.String,
+                    expiresAt: Swift.Int
                 ) {
                     self.value = value
                     self.expiresAt = expiresAt
@@ -23622,7 +23737,7 @@ public enum Components {
             /// Ephemeral key returned by the API.
             ///
             /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateResponse/client_secret`.
-            public var clientSecret: Components.Schemas.RealtimeSessionCreateResponse.ClientSecretPayload?
+            public var clientSecret: Components.Schemas.RealtimeSessionCreateResponse.ClientSecretPayload
             /// - Remark: Generated from `#/components/schemas/RealtimeSessionCreateResponse/ModalitiesPayload`.
             @frozen public enum ModalitiesPayloadPayload: String, Codable, Hashable, Sendable, CaseIterable {
                 case text = "text"
@@ -23930,7 +24045,7 @@ public enum Components {
             ///   - temperature: Sampling temperature for the model, limited to [0.6, 1.2]. Defaults to 0.8.
             ///   - maxResponseOutputTokens: Maximum number of output tokens for a single assistant response,
             public init(
-                clientSecret: Components.Schemas.RealtimeSessionCreateResponse.ClientSecretPayload? = nil,
+                clientSecret: Components.Schemas.RealtimeSessionCreateResponse.ClientSecretPayload,
                 modalities: Components.Schemas.RealtimeSessionCreateResponse.ModalitiesPayload? = nil,
                 instructions: Swift.String? = nil,
                 voice: Components.Schemas.RealtimeSessionCreateResponse.VoicePayload? = nil,
@@ -24404,11 +24519,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/RunObject/tools`.
             public var tools: Components.Schemas.RunObject.ToolsPayload
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/RunObject/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// - Remark: Generated from `#/components/schemas/RunObject/usage`.
             public var usage: Components.Schemas.RunCompletionUsage?
             /// The sampling temperature used for this run. If not set, defaults to 1.
@@ -24538,7 +24650,7 @@ public enum Components {
             ///   - model: The model that the [assistant](/docs/api-reference/assistants) used for this run.
             ///   - instructions: The instructions that the [assistant](/docs/api-reference/assistants) used for this run.
             ///   - tools: The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             ///   - usage:
             ///   - temperature: The sampling temperature used for this run. If not set, defaults to 1.
             ///   - topP: The nucleus sampling value used for this run. If not set, defaults to 1.
@@ -24566,7 +24678,7 @@ public enum Components {
                 model: Swift.String,
                 instructions: Swift.String,
                 tools: Components.Schemas.RunObject.ToolsPayload,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil,
+                metadata: Components.Schemas.Metadata? = nil,
                 usage: Components.Schemas.RunCompletionUsage? = nil,
                 temperature: Swift.Double? = nil,
                 topP: Swift.Double? = nil,
@@ -26011,11 +26123,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/RunStepObject/completed_at`.
             public var completedAt: Swift.Int?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/RunStepObject/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// - Remark: Generated from `#/components/schemas/RunStepObject/usage`.
             public var usage: Components.Schemas.RunStepCompletionUsage?
             /// Creates a new `RunStepObject`.
@@ -26035,7 +26144,7 @@ public enum Components {
             ///   - cancelledAt: The Unix timestamp (in seconds) for when the run step was cancelled.
             ///   - failedAt: The Unix timestamp (in seconds) for when the run step failed.
             ///   - completedAt: The Unix timestamp (in seconds) for when the run step completed.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             ///   - usage:
             public init(
                 id: Swift.String,
@@ -26052,7 +26161,7 @@ public enum Components {
                 cancelledAt: Swift.Int? = nil,
                 failedAt: Swift.Int? = nil,
                 completedAt: Swift.Int? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil,
+                metadata: Components.Schemas.Metadata? = nil,
                 usage: Components.Schemas.RunStepCompletionUsage? = nil
             ) {
                 self.id = id
@@ -27190,11 +27299,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/ThreadObject/tool_resources`.
             public var toolResources: Components.Schemas.ThreadObject.ToolResourcesPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/ThreadObject/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `ThreadObject`.
             ///
             /// - Parameters:
@@ -27202,13 +27308,13 @@ public enum Components {
             ///   - object: The object type, which is always `thread`.
             ///   - createdAt: The Unix timestamp (in seconds) for when the thread was created.
             ///   - toolResources: A set of resources that are made available to the assistant's tools in this thread. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             public init(
                 id: Swift.String,
                 object: Components.Schemas.ThreadObject.ObjectPayload,
                 createdAt: Swift.Int,
                 toolResources: Components.Schemas.ThreadObject.ToolResourcesPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil
+                metadata: Components.Schemas.Metadata? = nil
             ) {
                 self.id = id
                 self.object = object
@@ -27485,21 +27591,18 @@ public enum Components {
             }
             /// - Remark: Generated from `#/components/schemas/UpdateVectorStoreRequest/expires_after`.
             public var expiresAfter: Components.Schemas.UpdateVectorStoreRequest.ExpiresAfterPayload?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/UpdateVectorStoreRequest/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `UpdateVectorStoreRequest`.
             ///
             /// - Parameters:
             ///   - name: The name of the vector store.
             ///   - expiresAfter:
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             public init(
                 name: Swift.String? = nil,
                 expiresAfter: Components.Schemas.UpdateVectorStoreRequest.ExpiresAfterPayload? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil
+                metadata: Components.Schemas.Metadata? = nil
             ) {
                 self.name = name
                 self.expiresAfter = expiresAfter
@@ -27521,7 +27624,7 @@ public enum Components {
                     forKey: .expiresAfter
                 )
                 self.metadata = try container.decodeIfPresent(
-                    OpenAPIRuntime.OpenAPIObjectContainer.self,
+                    Components.Schemas.Metadata.self,
                     forKey: .metadata
                 )
                 try decoder.ensureNoAdditionalProperties(knownKeys: [
@@ -29063,11 +29166,8 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/VectorStoreObject/last_active_at`.
             public var lastActiveAt: Swift.Int?
-            /// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
-            ///
-            ///
             /// - Remark: Generated from `#/components/schemas/VectorStoreObject/metadata`.
-            public var metadata: OpenAPIRuntime.OpenAPIObjectContainer?
+            public var metadata: Components.Schemas.Metadata?
             /// Creates a new `VectorStoreObject`.
             ///
             /// - Parameters:
@@ -29081,7 +29181,7 @@ public enum Components {
             ///   - expiresAfter:
             ///   - expiresAt: The Unix timestamp (in seconds) for when the vector store will expire.
             ///   - lastActiveAt: The Unix timestamp (in seconds) for when the vector store was last active.
-            ///   - metadata: Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maximum of 512 characters long.
+            ///   - metadata:
             public init(
                 id: Swift.String,
                 object: Components.Schemas.VectorStoreObject.ObjectPayload,
@@ -29093,7 +29193,7 @@ public enum Components {
                 expiresAfter: Components.Schemas.VectorStoreExpirationAfter? = nil,
                 expiresAt: Swift.Int? = nil,
                 lastActiveAt: Swift.Int? = nil,
-                metadata: OpenAPIRuntime.OpenAPIObjectContainer? = nil
+                metadata: Components.Schemas.Metadata? = nil
             ) {
                 self.id = id
                 self.object = object
@@ -30465,42 +30565,20 @@ public enum Operations {
                     ///
                     /// - Remark: Generated from `#/paths/batches/POST/requestBody/json/completion_window`.
                     public var completionWindow: Operations.CreateBatch.Input.Body.JsonPayload.CompletionWindowPayload
-                    /// Optional custom metadata for the batch.
-                    ///
                     /// - Remark: Generated from `#/paths/batches/POST/requestBody/json/metadata`.
-                    public struct MetadataPayload: Codable, Hashable, Sendable {
-                        /// A container of undocumented properties.
-                        public var additionalProperties: [String: Swift.String]
-                        /// Creates a new `MetadataPayload`.
-                        ///
-                        /// - Parameters:
-                        ///   - additionalProperties: A container of undocumented properties.
-                        public init(additionalProperties: [String: Swift.String] = .init()) {
-                            self.additionalProperties = additionalProperties
-                        }
-                        public init(from decoder: any Decoder) throws {
-                            additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
-                        }
-                        public func encode(to encoder: any Encoder) throws {
-                            try encoder.encodeAdditionalProperties(additionalProperties)
-                        }
-                    }
-                    /// Optional custom metadata for the batch.
-                    ///
-                    /// - Remark: Generated from `#/paths/batches/POST/requestBody/json/metadata`.
-                    public var metadata: Operations.CreateBatch.Input.Body.JsonPayload.MetadataPayload?
+                    public var metadata: Components.Schemas.Metadata?
                     /// Creates a new `JsonPayload`.
                     ///
                     /// - Parameters:
                     ///   - inputFileId: The ID of an uploaded file that contains requests for the new batch.
                     ///   - endpoint: The endpoint to be used for all requests in the batch. Currently `/v1/chat/completions`, `/v1/embeddings`, and `/v1/completions` are supported. Note that `/v1/embeddings` batches are also restricted to a maximum of 50,000 embedding inputs across all requests in the batch.
                     ///   - completionWindow: The time frame within which the batch should be processed. Currently only `24h` is supported.
-                    ///   - metadata: Optional custom metadata for the batch.
+                    ///   - metadata:
                     public init(
                         inputFileId: Swift.String,
                         endpoint: Operations.CreateBatch.Input.Body.JsonPayload.EndpointPayload,
                         completionWindow: Operations.CreateBatch.Input.Body.JsonPayload.CompletionWindowPayload,
-                        metadata: Operations.CreateBatch.Input.Body.JsonPayload.MetadataPayload? = nil
+                        metadata: Components.Schemas.Metadata? = nil
                     ) {
                         self.inputFileId = inputFileId
                         self.endpoint = endpoint
@@ -40086,17 +40164,24 @@ public enum Operations {
                 ///
                 /// - Remark: Generated from `#/paths/organization/users/GET/query/after`.
                 public var after: Swift.String?
+                /// Filter by the email address of users.
+                ///
+                /// - Remark: Generated from `#/paths/organization/users/GET/query/emails`.
+                public var emails: [Swift.String]?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
                 ///   - after: A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
+                ///   - emails: Filter by the email address of users.
                 public init(
                     limit: Swift.Int? = nil,
-                    after: Swift.String? = nil
+                    after: Swift.String? = nil,
+                    emails: [Swift.String]? = nil
                 ) {
                     self.limit = limit
                     self.after = after
+                    self.emails = emails
                 }
             }
             public var query: Operations.ListUsers.Input.Query

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1610"
+   LastUpgradeVersion = "1620"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ChatGPTSwift"
-               BuildableName = "ChatGPTSwift"
-               BlueprintName = "ChatGPTSwift"
+               BlueprintIdentifier = "SwiftGPT"
+               BuildableName = "SwiftGPT"
+               BlueprintName = "SwiftGPT"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,9 +34,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ChatGPTSwiftTests"
-               BuildableName = "ChatGPTSwiftTests"
-               BlueprintName = "ChatGPTSwiftTests"
+               BlueprintIdentifier = "SwiftGPTTests"
+               BuildableName = "SwiftGPTTests"
+               BlueprintName = "SwiftGPTTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -62,9 +62,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ChatGPTSwift"
-            BuildableName = "ChatGPTSwift"
-            BlueprintName = "ChatGPTSwift"
+            BlueprintIdentifier = "SwiftGPT"
+            BuildableName = "SwiftGPT"
+            BlueprintName = "SwiftGPT"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
