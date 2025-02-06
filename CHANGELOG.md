@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. Prefire adh
 
 ## 1.1.3
 
+Feb 6, 2024
+    
+    - Added ResponseFormat parameter to /chat/completions
+
+## 1.1.3
+
 Feb 2, 2024
 
     - Added o3-mini model.

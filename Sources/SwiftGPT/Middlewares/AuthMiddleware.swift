@@ -23,7 +23,7 @@ extension OpenAI {
             // Adds the `Authorization` header field with the provided value.
             let key = if let apiKey = apiKey {
                 apiKey
-            } else { OpenAI.Configuration.apiKey }
+            } else { await OpenAI.Configuration.apiKey }
             request.headerFields[.authorization] = "Bearer \(try await key.value)"
             return try await next(request, body, baseURL)
         }

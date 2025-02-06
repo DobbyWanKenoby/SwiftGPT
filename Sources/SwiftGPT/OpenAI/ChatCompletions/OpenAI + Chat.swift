@@ -47,6 +47,7 @@ public extension OpenAI {
         ///   - model: KeyPath to used GPT model
         ///   - apiKey: Used API key. Do not pass (or set `nil`) to using key from global configuration (`OpenAI.Configuration.apiKey`)
         ///   - url: Used URL for requests.
+        @MainActor
         public init(model: GPTModel<C>,
              apiKey: OpenAI.APIKey? = nil,
              url: String = OpenAI.Configuration.url) {
@@ -225,7 +226,7 @@ public extension OpenAI {
                                  developerMessage: String?,
                                  previousMessages: [ChatCompletionsHistoryMessage] = [],
                                  configuration: C,
-                                 stream: Bool) -> Operations.CreateChatCompletion.Input.Body {
+                                 stream: Bool) throws -> Operations.CreateChatCompletion.Input.Body {
             
             let usingOpenAPIFormatModel: Components.Schemas.CreateChatCompletionRequest.ModelPayload = switch model.apiModel {
             case .model(let apiModel):
@@ -244,14 +245,33 @@ public extension OpenAI {
                 temperature: configuration.temperature
             )
             
+            // stop
             if let stop = configuration.stop {
                 request.stop = .case2(stop)
             }
+            // max_token
             if let _c = configuration as? ChatCompletionsWithMaxTokensParameter {
                 request.maxTokens = _c.maxTokens
             }
+            // max_completion_tokens
             if let _c = configuration as? ChatCompletionsWithMaxCompletionTokensParameter {
                 request.maxCompletionTokens = _c.maxCompletionTokens
+            }
+            // response_format
+            if let _c = configuration as? ChatCompletionsWithResponseFormatParameter, let responseFormat = _c.responseFormat {
+                switch responseFormat {
+                case .text:
+                    request.responseFormat = .ResponseFormatText(.init(_type: .text))
+                case .jsonObject:
+                    request.responseFormat = .ResponseFormatJsonObject(.init(_type: .jsonObject))
+                case let .jsonSchema(name: name, description: description, strict: strict, schema: schema):
+                    request.responseFormat = .ResponseFormatJsonSchema(
+                        .init(_type: .jsonSchema,
+                              jsonSchema: .init(description: description,
+                                                name: name,
+                                                schema: .init(additionalProperties: try .init(unvalidatedValue: schema)),
+                                                strict: strict)))
+                }
             }
             return .json(request)
         }

@@ -19,11 +19,13 @@ public extension OpenAI {
 
     
     /// Default configuration of OpenAI models
-    actor Configuration {
+    @MainActor
+    enum Configuration {
         public static var url = "https://api.openai.com/v1"
         public static var apiKey: APIKey = .apiKey("")
     }
     
+    @MainActor
     enum APIKey: Sendable {
         case apiKey(String)
         case provider(APIKeyProvider)
