@@ -14,7 +14,7 @@ public extension OpenAI {
         public let content: String
         public let name: String?
         
-        init(role: Role, content: String, name: String? = nil) {
+        public init(role: Role, content: String, name: String? = nil) {
             self.role = role
             self.content = content
             self.name = name

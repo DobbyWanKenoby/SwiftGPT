@@ -50,7 +50,7 @@ public extension OpenAI {
         @MainActor
         public init(model: GPTModel<C>,
              apiKey: OpenAI.APIKey? = nil,
-             url: String = OpenAI.Configuration.url) {
+             url: String) {
             self.model = model
             self.apiKey = apiKey
             let clientTransport: ClientTransport
@@ -113,7 +113,7 @@ public extension OpenAI {
             let response: Operations.CreateChatCompletion.Output
             do {
                 response = try await client.createChatCompletion(
-                    body: requestBody(promt: promt, image: image, userName: userName, developerMessage: developerMessage, configuration: configuration, stream: false)
+                    body: requestBody(promt: promt, image: image, userName: userName, developerMessage: developerMessage, previousMessages: previousMessages, configuration: configuration, stream: false)
                 )
             } catch {
                 throw .requestError(error)
@@ -185,7 +185,7 @@ public extension OpenAI {
                 response = try await client.createChatCompletion(
                     .init(
                         headers: .init(accept: [.init(contentType: .textEventStream)]),
-                        body: requestBody(promt: promt, image: image, userName: userName, developerMessage: developerMessage, configuration: configuration, stream: true)
+                        body: requestBody(promt: promt, image: image, userName: userName, developerMessage: developerMessage, previousMessages: previousMessages, configuration: configuration, stream: true)
                     )
                 )
             } catch {
