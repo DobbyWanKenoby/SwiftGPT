@@ -49,8 +49,8 @@ public extension OpenAI {
         ///   - url: Used URL for requests.
         @MainActor
         public init(model: GPTModel<C>,
-             apiKey: OpenAI.APIKey? = nil,
-             url: String) {
+                    apiKey: OpenAI.APIKey? = nil,
+                    url: String = OpenAI.Configuration.url) {
             self.model = model
             self.apiKey = apiKey
             let clientTransport: ClientTransport
@@ -358,6 +358,88 @@ public extension OpenAI {
                     role: .user))
         }
         
+        // MARK: - Embeddings
+        
+        public func createEmbedding(
+            input: String,
+            embeddingModel: String,
+            normalizeL2: Bool = true
+        ) async throws -> [Float] {
+            let vectors = try await createEmbeddings(
+                inputs: [input],
+                embeddingModel: embeddingModel,
+                normalizeL2: normalizeL2
+            )
+            return vectors.first ?? []
+        }
+        
+        public func createEmbeddings(
+            inputs: [String],
+            embeddingModel: String,
+            normalizeL2: Bool = true
+        ) async throws(ChatCompletionsError) -> [[Float]] {
+            guard !inputs.isEmpty else { return [] }
+            
+            let response: Operations.CreateEmbedding.Output
+            
+            do {
+                let reqBody = try makeEmbeddingRequest(
+                    modelName: embeddingModel,
+                    inputs: inputs
+                )
+                
+                response = try await client.createEmbedding(.init(body: .json(reqBody)))
+            } catch {
+                throw .requestError(error)
+            }
+            
+            do {
+                switch response {
+                case .ok(let ok):
+                    let json = try ok.body.json
+                    
+                    var vectors: [[Float]] = json.data.map { item in
+                        item.embedding.map { Float($0) }
+                    }
+                    if normalizeL2 {
+                        for i in vectors.indices {
+                            let v = vectors[i]
+                            let norm = sqrt(v.reduce(0) { $0 + $1 * $1 })
+                            if norm > 0 {
+                                vectors[i] = v.map { $0 / norm }
+                            }
+                        }
+                    }
+                    
+                    return vectors
+                    
+                case .undocumented(let statusCode, let payload):
+                    throw OpenAI.getError(statusCode: statusCode, model: model.name, payload: payload)
+                }
+            } catch {
+                throw .requestError(error)
+            }
+        }
+        
+        private func makeEmbeddingRequest(
+            modelName: String,
+            inputs: [String]
+        ) throws -> Components.Schemas.CreateEmbeddingRequest {
+            let inputPayload: Components.Schemas.CreateEmbeddingRequest.InputPayload = .case2(inputs)
+            
+            let modelPayload = Components.Schemas.CreateEmbeddingRequest.ModelPayload(
+                value1: modelName,
+                value2: nil
+            )
+            
+            return Components.Schemas.CreateEmbeddingRequest(
+                input: inputPayload,
+                model: modelPayload,
+                encodingFormat: nil,
+                dimensions: nil,
+                user: nil
+            )
+        }
     }
     
 }
