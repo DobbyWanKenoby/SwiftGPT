@@ -31,6 +31,10 @@ let package = Package(
                 .product(name: "OpenAPIAsyncHTTPClient", package: "swift-openapi-async-http-client",
                     condition: .when(platforms: [.linux])
                 ),
+            ],
+            swiftSettings: [
+                .enableUpcomingFeature("IsolatedDefaultValues"),
+                .enableUpcomingFeature("IsolatedGlobalVariables")
             ]
             // uncomment to generate new API files from OpenAPI.yaml
             // get files after build from /Users/***/Library/Developer/Xcode/DerivedData/SwiftGPT-many-manu-characters/SourcePackages/plugins/swiftgpt.output/SwiftGPT/OpenAPIGenerator/GeneratedSources
