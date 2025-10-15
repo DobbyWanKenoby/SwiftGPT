@@ -49,8 +49,8 @@ public extension OpenAI {
         ///   - url: Used URL for requests.
         @MainActor
         public init(model: GPTModel<C>,
-             apiKey: OpenAI.APIKey? = nil,
-             url: String) {
+                    apiKey: OpenAI.APIKey? = nil,
+                    url: String = OpenAI.Configuration.url) {
             self.model = model
             self.apiKey = apiKey
             let clientTransport: ClientTransport

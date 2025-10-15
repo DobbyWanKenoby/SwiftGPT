@@ -17,8 +17,8 @@ public enum OpenAI: Sendable {}
 
 public extension OpenAI {
 
-    
     /// Default configuration of OpenAI models
+    @MainActor
     enum Configuration {
         public static var url = "https://api.openai.com/v1"
         public static var apiKey: APIKey = .apiKey("")
