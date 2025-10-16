@@ -43,5 +43,6 @@ let package = Package(
         .testTarget(
             name: "SwiftGPTTests",
             dependencies: ["SwiftGPT"]),
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )
